@@ -20,3 +20,24 @@ export function sortString(str: string) {
 
 	return result.join(' ');
 }
+
+export function queueTime(customers: number[], boxOffices: number) {
+	if (customers.length < 1) {
+		return 0;
+	}
+
+	const queues = customers.slice(0, boxOffices);
+	const queue = customers.slice(boxOffices);
+
+	while (queue.length > 0) {
+		const customer = queue.shift();
+
+		queues.sort((a, b) => a - b);
+
+		if (customer) {
+			queues[0] += customer;
+		}
+	}
+
+	return Math.max(...queues);
+}
