@@ -21,13 +21,13 @@ export function sortString(str: string) {
 	return result.join(' ');
 }
 
-export function queueTime(customers: number[], boxOffices: number) {
+export function queueTime(customers: number[], machines: number) {
 	if (customers.length < 1) {
 		return 0;
 	}
 
-	const queues = customers.slice(0, boxOffices);
-	const queue = customers.slice(boxOffices);
+	const queues = customers.slice(0, machines);
+	const queue = customers.slice(machines);
 
 	while (queue.length > 0) {
 		const customer = queue.shift();
