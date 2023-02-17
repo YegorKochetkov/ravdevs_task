@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { queueTime, sortString } from "./tasks";
+import { nextBiggerNumber, queueTime, sortString } from "./tasks";
 
 describe('sort string by number in the word', () => {
 	it('should return empty string for empty input', () => {
@@ -47,5 +47,21 @@ describe('calculate time required to serve a queue at the supermarket', () => {
 				4
 			)
 		).toBe(162);
+	});
+});
+
+describe('find the next larger number formed from the same digits', () => {
+	it('should return -1 if no greater number', () => {
+		expect(nextBiggerNumber(9)).toBe(-1);
+		expect(nextBiggerNumber(111)).toBe(-1);
+		expect(nextBiggerNumber(531)).toBe(-1);
+	});
+
+	it('should return next bigger number', () => {
+		expect(nextBiggerNumber(23)).toBe(32);
+		expect(nextBiggerNumber(624)).toBe(642);
+		expect(nextBiggerNumber(2018)).toBe(2081);
+		expect(nextBiggerNumber(2081)).toBe(2108);
+		expect(nextBiggerNumber(2810)).toBe(8012);
 	});
 });
